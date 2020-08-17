@@ -1,1 +1,0 @@
-export PATH=/Users/panusron/Downloads/flutter/bin:$PATH

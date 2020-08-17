@@ -1,123 +1,55 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
 
 
-class MapSample extends StatefulWidget {
-  MapSample() : super();
-
-  final String title = "Maps";
-
+class MapSample extends StatefulWidget {  
   @override
-  MapSampleState createState() => MapSampleState();
+  State<MapSample> createState() => _MapSampleState();
 }
 
-class MapSampleState extends State<MapSample> {
+class _MapSampleState extends State<MapSample> {
   Completer<GoogleMapController> _controller = Completer();
-  static const LatLng _center = const LatLng(13.655320, 100.498830);
-  final Set<Marker> _markers = {};
-  LatLng _lastMapPosition = _center;
-  MapType _currentMapType = MapType.normal;
 
-  static final CameraPosition _position1 = CameraPosition(
-    // bearing: 192.833,
-    target: LatLng(13.746788, 100.539370),
-    tilt: 59.440,
-    zoom: 11.0,
-    );
+  static const LatLng centerMap = const LatLng(13.655317, 100.498824);
+  CameraPosition cameraPosirion = CameraPosition(
+    target: centerMap,
+    zoom: 16,
+  );
 
-  Future<void> _goToPosition1() async {
-      final GoogleMapController controller = await _controller.future;
-      controller.animateCamera(CameraUpdate.newCameraPosition(_position1));
-  }
+  LocationData currentLocation;
 
-  _onMapCreated(GoogleMapController controller) {
-    _controller.complete(controller);
-  }
-
-  _onCameraMove(CameraPosition position) {
-    _lastMapPosition = position.target;
-  }
-
-  _onMapTypeButtonPressed(){
-    setState(() {
-      _currentMapType = _currentMapType == MapType.normal 
-      ? MapType.satellite
-      : MapType.normal;
-    });
-  }
-
-  _onAddMarkerButtonPressed(){
-    setState(() {
-      _markers.add(Marker(
-        markerId: MarkerId(_lastMapPosition.toString()),
-        position: _lastMapPosition,
-        infoWindow: InfoWindow(
-          title: 'This is a Title',
-          snippet: 'This is a snippet'
-        ),
-        icon: BitmapDescriptor.defaultMarker,
-      ),
-      );
-    });
-  }
-
-
-  Widget button(Function function, IconData icon) {
-    return FloatingActionButton(
-      onPressed: function,
-      materialTapTargetSize: MaterialTapTargetSize.padded,
-      backgroundColor: Colors.blue,
-      child: Icon(
-        icon,
-        size: 36.0,
-      ),
-    );
-  }
+  @override
+void initState(){
+  super.initState();
+  // findLocation();
+}
 
   @override
   Widget build(BuildContext context) {
-    var goToPosition1 = _goToPosition1();
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-          backgroundColor: Colors.blue,
-        ),
-        body: Stack(
-          children: <Widget>[
-            GoogleMap(
-              onMapCreated: _onMapCreated,
-              initialCameraPosition: CameraPosition(
-                target: _center,
-                zoom: 11.0,
-              ),
-              mapType: _currentMapType,
-              markers: _markers,
-              onCameraMove: _onCameraMove,
-            ),
-            Padding(
-              padding: EdgeInsets.all(16.0),
-              child: Align(
-                alignment: Alignment.topRight,
-                child: Column(
-                  children: <Widget>[
-                    button(_onMapTypeButtonPressed, Icons.map),
-                    SizedBox(
-                      height: 16.0,
-                    ),
-                    button(_onAddMarkerButtonPressed, Icons.add_location),
-                    SizedBox(
-                      height: 16.0,
-                    ),
-                    button(_goToPosition1, Icons.location_searching),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+    // TODO: implement build
+    throw UnimplementedError();
   }
+
+
+  // Future<void> findLocation() async {
+  //   currentLocation = await LocationData();
+  //   print('Lat = ${currentLocation.latitude}, Lng = ${currentLocation.longitude}');
+  // }
+
+  // Future<LocationData> locationData() async {
+  //   var location = LocationData();
+
+  //   try{
+  //     return await location.getLocation();
+  //   } on PlatformException catch (e) {
+  //     if (e.code == 'PERMISSION_DENIED')
+  //     print('Permission Denied');
+  //   }
+  //   return null;
+  // }
 }
+
