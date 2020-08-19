@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:sharelymeter/home/signin.dart';
-import 'package:sharelymeter/home/signup.dart';
+import 'package:sharelymeter/signin/signin.dart';
+import 'package:sharelymeter/signup/signup.dart';
 import 'package:sharelymeter/utility/my_style.dart';
 
 class Home extends StatefulWidget {
