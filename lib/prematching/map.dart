@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sharelymeter/googlemapapi.dart'; // Stores the Google Maps API Key
+// Stores the Google Maps API Key
+import 'package:sharelymeter/googlemapapi.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -42,7 +43,7 @@ class _MapViewState extends State<MapView> {
 
   String _startAddress = '';
   String _destinationAddress = '';
-  String _placeDistance;
+  String _placeDistance = '';
 
   Set<Marker> markers = {};
 
@@ -238,7 +239,7 @@ class _MapViewState extends State<MapView> {
 
         await _createPolylines(startCoordinates, destinationCoordinates);
 
-        double totalDistance = 0.0;
+        double totalDistance = 1.0;
 
         // Calculating the total distance by adding the distance
         // between small segments
@@ -333,53 +334,53 @@ class _MapViewState extends State<MapView> {
               },
             ),
             // Show zoom buttons
-            SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    ClipOval(
-                      child: Material(
-                        color: Colors.blue[100], // button color
-                        child: InkWell(
-                          splashColor: Colors.blue, // inkwell color
-                          child: SizedBox(
-                            width: 50,
-                            height: 50,
-                            child: Icon(Icons.add),
-                          ),
-                          onTap: () {
-                            mapController.animateCamera(
-                              CameraUpdate.zoomIn(),
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    ClipOval(
-                      child: Material(
-                        color: Colors.blue[100], // button color
-                        child: InkWell(
-                          splashColor: Colors.blue, // inkwell color
-                          child: SizedBox(
-                            width: 50,
-                            height: 50,
-                            child: Icon(Icons.remove),
-                          ),
-                          onTap: () {
-                            mapController.animateCamera(
-                              CameraUpdate.zoomOut(),
-                            );
-                          },
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
+            // SafeArea(
+            //   child: Padding(
+            //     padding: const EdgeInsets.only(left: 10.0),
+            //     child: Column(
+            //       mainAxisAlignment: MainAxisAlignment.center,
+            //       children: <Widget>[
+            //         ClipOval(
+            //           child: Material(
+            //             color: Colors.blue[100], // button color
+            //             child: InkWell(
+            //               splashColor: Colors.blue, // inkwell color
+            //               child: SizedBox(
+            //                 width: 50,
+            //                 height: 50,
+            //                 child: Icon(Icons.add),
+            //               ),
+            //               onTap: () {
+            //                 mapController.animateCamera(
+            //                   CameraUpdate.zoomIn(),
+            //                 );
+            //               },
+            //             ),
+            //           ),
+            //         ),
+            //         SizedBox(height: 20),
+            //         ClipOval(
+            //           child: Material(
+            //             color: Colors.blue[100], // button color
+            //             child: InkWell(
+            //               splashColor: Colors.blue, // inkwell color
+            //               child: SizedBox(
+            //                 width: 50,
+            //                 height: 50,
+            //                 child: Icon(Icons.remove),
+            //               ),
+            //               onTap: () {
+            //                 mapController.animateCamera(
+            //                   CameraUpdate.zoomOut(),
+            //                 );
+            //               },
+            //             ),
+            //           ),
+            //         )
+            //       ],
+            //     ),
+            //   ),
+            // ),
             // Show the place input fields & button for
             // showing the route
             SafeArea(
