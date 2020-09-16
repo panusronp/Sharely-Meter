@@ -1,38 +1,22 @@
 import 'package:flutter/material.dart';
-
 import 'package:sharelymeter/constants.dart';
-import 'package:sharelymeter/screens/home/home_screen.dart';
-import 'package:sharelymeter/prematching/map.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:sharelymeter/googlemapapi.dart'; // Stores the Google Maps API Key
-import 'package:flutter_polyline_points/flutter_polyline_points.dart';
-import 'package:geolocator/geolocator.dart';
-
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:sharelymeter/screens/account/account_screen.dart';
 import 'package:sharelymeter/screens/activity/activity_screen.dart';
 import 'package:sharelymeter/screens/add/add_screen.dart';
 import 'package:sharelymeter/screens/home/home_screen.dart';
 import 'package:sharelymeter/screens/notification/notification_screen.dart';
+import 'package:sharelymeter/screens/welcome/welcomescreen.dart';
+
+import 'package:sharelymeter/prematching/map.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:sharelymeter/googlemapapi.dart'; // Stores the Google Maps API Key
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
+import 'package:geolocator/geolocator.dart';
 
 void main() {
   runApp(MyApp());
 }
-
-// class MyApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       title: 'Sharely Meter',
-//       theme: ThemeData(
-//         primaryColor: kPrimaryColor,
-//         scaffoldBackgroundColor: Colors.white,
-//       ),
-//       home: MapView(),
-//     );
-//   }
-// }
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -48,7 +32,9 @@ class MyApp extends StatelessWidget {
         appBarTheme: AppBarTheme(color: kPrimaryColor, elevation: 0),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: SharlyMeter(),
+      //ถ้า Log-in แล้วให้เข้า SharlyMeter() ถ้ายังไม่ Log-in ให้เข้า WelcomeScreen()
+      //home: SharlyMeter(),
+      home: WelcomeScreen()
     );
   }
 }
