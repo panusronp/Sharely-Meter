@@ -239,7 +239,7 @@ class _MapViewState extends State<MapView> {
 
         await _createPolylines(startCoordinates, destinationCoordinates);
 
-        double totalDistance = 1.0;
+        double totalDistance = 0.0;
 
         // Calculating the total distance by adding the distance
         // between small segments
@@ -280,7 +280,7 @@ class _MapViewState extends State<MapView> {
   _createPolylines(Position start, Position destination) async {
     polylinePoints = PolylinePoints();
     PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
-      googleAPI.API_KEY, // Google Maps API Key
+      Secrets.API_KEY, // Google Maps API Key
       PointLatLng(start.latitude, start.longitude),
       PointLatLng(destination.latitude, destination.longitude),
       travelMode: TravelMode.transit,

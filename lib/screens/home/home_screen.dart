@@ -1,67 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:sharelymeter/screens/login/login_screen.dart';
-import 'package:sharelymeter/screens/signup/signup_screen.dart';
-import 'package:sharelymeter/utility/my_style.dart';
+import 'package:sharelymeter/screens/home/components/body.dart'; 
 
-class Home extends StatefulWidget {
+class HomeScreen extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Sharely Meter'),
-      ),
-      // body: SingleChildScrollView(
-      //   child: Column(
-      //     children: <Widget>[
-      //       MyStyle().mySizeBox(),
-      //       showMap(),
-      //     ],
-      //   ),
-      // ),
-      drawer: showDrawer(),
+      appBar: buildAppBar(),
+      body: Body(),
     );
   }
 
-
-
-  Drawer showDrawer() => Drawer(
-      child:
-          ListView(children: <Widget>[showHead(), signInMenu(), signUpMenu()]));
-
-  ListTile signInMenu() {
-    return ListTile(
-      leading: Icon(Icons.android),
-      title: Text('Sign In'),
-      onTap: () {
-        Navigator.pop(context);
-        MaterialPageRoute route =
-            MaterialPageRoute(builder: (value) => SignIn());
-        Navigator.push(context, route);
-      },
+  AppBar buildAppBar() {
+    return AppBar(
+      
     );
-  }
-
-  ListTile signUpMenu() {
-    return ListTile(
-      leading: Icon(Icons.android),
-      title: Text('Sign Up'),
-      onTap: () {
-        Navigator.pop(context);
-        MaterialPageRoute route =
-            MaterialPageRoute(builder: (value) => SignUp());
-        Navigator.push(context, route);
-      },
-    );
-  }
-
-  UserAccountsDrawerHeader showHead() {
-    return UserAccountsDrawerHeader(
-        accountName: Text('Game'), accountEmail: Text('Plaese Login'));
   }
 }
