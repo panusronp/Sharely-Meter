@@ -22,13 +22,17 @@ class Body extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
-            SizedBox(height: size.height * 0.03),
             Image.asset(
               "assets/images/signup.png",
-              height: size.height * 0.4 ,
+              height: size.height * 0.35 ,
             ),
             RoundedInputField(
-              hintText: "Your Name",
+              hintText: "First Name",
+              icon: Icons.person,
+              onChanged: (value) {},
+            ),
+            RoundedInputField(
+              hintText: "Last Name",
               icon: Icons.person,
               onChanged: (value) {},
             ),
