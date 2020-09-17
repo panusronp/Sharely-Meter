@@ -5,6 +5,8 @@ import 'package:sharelymeter/components/rounded_input_field.dart';
 import 'package:sharelymeter/components/rounded_password_field.dart';
 import 'package:sharelymeter/screens/login/login_screen.dart';
 import 'package:sharelymeter/screens/signup/components/background.dart';
+import 'package:sharelymeter/screens/signup/components/or_divider.dart';
+import 'package:sharelymeter/screens/signup/components/social_icon.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -24,7 +26,7 @@ class Body extends StatelessWidget {
             ),
             Image.asset(
               "assets/images/signup.png",
-              height: size.height * 0.35 ,
+              height: size.height * 0.25,
             ),
             RoundedInputField(
               hintText: "First Name",
@@ -48,7 +50,7 @@ class Body extends StatelessWidget {
               text: "SIGNUP",
               press: () {},
             ),
-            SizedBox(height: size.height * 0.03),
+            SizedBox(height: size.height * 0.02),
             AlreadyHaveAnAccountCheck(
               login: false,
               press: () {
@@ -62,6 +64,25 @@ class Body extends StatelessWidget {
                 );
               },
             ),
+            OrDivider(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SocalIcon(
+                  iconSrc: "assets/icons/google.svg",
+                  press: () {},
+                ),
+                SocalIcon(
+                  iconSrc: "assets/icons/line.svg",
+                  press: () {},
+                ),
+                SocalIcon(
+                  iconSrc: "assets/icons/apple.svg",
+                  press: () {},
+                ),
+              ],
+            ),
+            //SizedBox(height: size.height * 0.01),
           ],
         ),
       ),
